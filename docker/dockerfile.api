@@ -1,0 +1,26 @@
+# ---- Base Python Image ----
+FROM python:3.10-slim AS base
+
+# ---- Environment Setup ----
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# ---- Install Dependencies ----
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# ---- Copy App Source ----
+COPY ai/ ./ai/
+COPY client/ ./client/
+COPY data/ ./data/
+COPY interfaces/ ./interfaces/
+COPY rasa_core/ ./rasa_core/
+COPY .env .env
+
+# ---- Expose App Port ----
+EXPOSE 8000
+
+# ---- Run the FastAPI Server ----
+CMD ["uvicorn", "interfaces.api_server.main:app", "--host", "0.0.0.0", "--port", "8000"]

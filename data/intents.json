@@ -1,0 +1,27 @@
+[
+  {
+    "tag": "greeting",
+    "patterns": ["hi", "hello", "hey", "good morning", "good evening"],
+    "responses": ["Hello! 👋", "Hi there! How can I assist?", "Hey! Need help with something?"]
+  },
+  {
+    "tag": "goodbye",
+    "patterns": ["bye", "goodbye", "see you", "catch you later"],
+    "responses": ["Goodbye! Have a great day!", "See you soon!", "Bye for now."]
+  },
+  {
+    "tag": "thanks",
+    "patterns": ["thanks", "thank you", "much appreciated"],
+    "responses": ["You're welcome! 😊", "Glad to help!", "Anytime!"]
+  },
+  {
+    "tag": "help",
+    "patterns": ["i need help", "can you help me", "assist me", "i need support"],
+    "responses": ["Sure, tell me more.", "I'm here to help. What's the issue?", "Let’s fix this together."]
+  },
+  {
+    "tag": "unknown",
+    "patterns": [],
+    "responses": ["Sorry, I didn’t understand that.", "Could you rephrase?", "I’m not sure how to respond."]
+  }
+]

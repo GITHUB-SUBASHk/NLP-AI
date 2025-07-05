@@ -1,0 +1,27 @@
+{
+  "positive_threshold": 0.3,
+  "negative_threshold": -0.3,
+  "tone_labels": {
+    "positive": "😊 Positive",
+    "negative": "😠 Negative",
+    "neutral": "😐 Neutral"
+  },
+  "tones": {
+    "neutral": {
+      "keywords": ["okay", "sure", "alright", "fine"],
+      "response_tint": "neutral"
+    },
+    "positive": {
+      "keywords": ["great", "awesome", "thank you", "happy"],
+      "response_tint": "uplifting"
+    },
+    "negative": {
+      "keywords": ["hate", "bad", "angry", "annoyed"],
+      "response_tint": "calming"
+    },
+    "urgent": {
+      "keywords": ["now", "urgent", "immediately", "asap"],
+      "response_tint": "quick_action"
+    }
+  }
+}

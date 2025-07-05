@@ -1,0 +1,12 @@
+#File:if/web/src/styles/globals.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+    @apply bg-background 
+    text-foreground font-sans 
+    antialiased; 
+}
+
