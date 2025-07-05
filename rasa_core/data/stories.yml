@@ -1,0 +1,55 @@
+#File: data/stories.yml
+
+version: "3.1"
+stories:
+- story: greet help feedback
+  steps:
+    - intent: greeting
+    - action: utter_greeting
+    - intent: ask_help
+    - action: utter_ask_help
+    - intent: feedback
+    - action: utter_feedback
+
+- story: complaint escalation goodbye
+  steps:
+    - intent: complain
+    - action: utter_complain
+    - intent: escalate
+    - action: utter_escalate
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: compliment suggest mood
+  steps:
+    - intent: compliment
+    - action: utter_compliment
+    - intent: task_status
+    - action: utter_task_status
+    - intent: mood_check
+    - action: utter_mood_check
+
+- story: fallback retry handoff
+  steps:
+    - intent: fallback
+    - action: utter_fallback
+    - intent: escalate
+    - action: utter_escalate
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: slot filling flow
+  steps:
+    - intent: greeting
+    - action: utter_greeting
+    - slot_was_set:
+        - last_intent: greeting
+    - intent: ask_help
+    - action: action_set_tone_profile
+    - slot_was_set:
+        - preferred_tone: friendly
+    - intent: feedback
+    - action: action_dynamic_reply
+    - slot_was_set:
+        - last_message: "Thanks for your help!"
+

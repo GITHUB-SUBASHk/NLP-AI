@@ -1,0 +1,27 @@
+.message {
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-msg {
+  border-radius: 1rem 1rem 0 1rem;
+}
+
+.bot-msg {
+  border-radius: 1rem 1rem 1rem 0;
+  background-color: #f0f0f0;
+}
+
+/* Add responsive and high-contrast adjustments */
+@media (max-width: 640px) {
+  .message {
+    font-size: 0.9rem;
+  }
+}

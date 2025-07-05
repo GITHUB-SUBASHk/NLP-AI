@@ -1,0 +1,150 @@
+#File: data/nlu.yml
+
+version: "3.1"
+nlu:
+  - intent: greeting
+    examples: |
+      - hey
+      - hello
+      - hi there!
+      - good morning
+      - yo
+      - hey assistant
+      - hi, how are you?
+      - what's up?
+      - greetings
+      - hey, hope you're well
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you later
+      - catch you soon
+      - talk to you later
+      - peace out
+      - later!
+      - have a good one
+      - I'm off now
+      - thanks, that's all
+
+  - intent: ask_help
+    examples: |
+      - I need help
+      - can you help me?
+      - please assist
+      - I’m stuck
+      - help me out
+      - can you give me a hand?
+      - I’m lost, what should I do?
+      - need some support
+      - can you guide me?
+      - I could use some help
+
+  - intent: complain
+    examples: |
+      - this isn't working
+      - I'm frustrated with this
+      - something went wrong
+      - I have a complaint
+      - this is annoying
+      - I’m not happy with the result
+      - this is broken
+      - why is this so slow?
+      - I keep getting errors
+      - this is a pain
+
+  - intent: compliment
+    examples: |
+      - you’re awesome
+      - great job!
+      - thanks, that was helpful
+      - you did well
+      - I appreciate your help
+      - you’re the best
+      - that was quick!
+      - you rock
+      - nice work
+      - love your attitude
+
+  - intent: task_status
+    examples: |
+      - what's the status of my task?
+      - any update on my request?
+      - is my task done?
+      - how’s my project going?
+      - give me a progress update
+      - where are we on this?
+      - is it finished yet?
+      - can you check the status?
+      - update me on my task
+      - is my assignment complete?
+
+  - intent: feedback
+    examples: |
+      - here’s my feedback
+      - I have some thoughts
+      - let me give you some feedback
+      - I want to share my opinion
+      - can I give feedback?
+      - I’d like to suggest something
+      - I have a suggestion
+      - my feedback is
+      - I want to comment on this
+      - can I leave a review?
+
+  - intent: mood_check
+    examples: |
+      - I’m feeling happy
+      - I’m a bit down today
+      - I’m stressed out
+      - I’m excited!
+      - I’m feeling okay
+      - I’m anxious
+      - I’m in a great mood
+      - I’m tired
+      - I’m feeling positive
+      - I’m not myself today
+
+  - intent: escalate
+    examples: |
+      - I want to talk to a human
+      - escalate this issue
+      - can you connect me to support?
+      - I need a real person
+      - this needs escalation
+      - get me a supervisor
+      - can you escalate this?
+      - I want to speak to someone else
+      - please escalate
+      - transfer me to an agent
+
+  - intent: fallback
+    examples: |
+      - huh?
+      - what do you mean?
+      - I don’t get it
+      - can you repeat that?
+      - sorry, what?
+      - I’m confused
+      - not sure I follow
+      - can you clarify?
+      - I missed that
+      - what was that again?
+
+  - regex: issue
+    examples: |
+      - [login issue](issue)
+      - [payment problem](issue)
+      - [slow performance](issue)
+      - [error code 500](issue)
+      - [account locked](issue)
+
+  - regex: mood
+    examples: |
+      - [happy](mood)
+      - [sad](mood)
+      - [stressed](mood)
+      - [excited](mood)
+      - [tired](mood)
+      - [anxious](mood)

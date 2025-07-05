@@ -1,0 +1,19 @@
+Polyform Shield License 1.0.0
+
+Copyright © 2025  [SUBASH K ]
+
+This license lets you use and modify the software for non-commercial purposes only.
+
+You MAY:
+- View the source code
+- Fork it for private, non-commercial use
+- Contribute via pull requests
+
+You MAY NOT:
+- Use it in a commercial product or service
+- Deploy it in production
+- Resell or sublicense it
+- Redistribute it publicly
+
+For full license text, visit:
+https://polyformproject.org/licenses/shield/1.0.0/

@@ -1,0 +1,20 @@
+#File: data/rules.yml
+
+version: "3.1"
+rules:
+- rule: Greet and ask for help
+  steps:
+    - intent: greeting
+    - action: utter_greeting
+    - intent: ask_help
+    - action: utter_ask_help
+
+- rule: Handle fallback gracefully
+  steps:
+    - intent: fallback
+    - action: utter_fallback
+
+- rule: Escalate on request
+  steps:
+    - intent: escalate
+    - action: utter_escalate

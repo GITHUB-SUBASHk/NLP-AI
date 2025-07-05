@@ -1,0 +1,108 @@
+#File: domain.yml
+
+version: "3.1"
+
+intents:
+  - greeting
+  - goodbye
+  - ask_help
+  - complain
+  - compliment
+  - task_status
+  - feedback
+  - mood_check
+  - escalate
+  - fallback
+
+entities:
+  - issue
+  - mood
+  - keyword
+
+slots:
+  last_intent:
+    type: text
+    influence_conversation: false
+  preferred_tone:
+    type: categorical
+    values:
+      - calm
+      - assertive
+      - friendly
+      - professional
+    influence_conversation: true
+  last_message:
+    type: text
+    influence_conversation: false
+
+responses:
+  utter_greeting:
+    - text: "Hey there! 😊 How can I help you today?"
+    - text: "Hello! Ready to assist you."
+    - text: "Hi! What’s on your mind?"
+    - text: "Welcome back! How are you feeling?"
+
+  utter_goodbye:
+    - text: "Take care! If you need anything, just ask."
+    - text: "Goodbye! Stay positive."
+    - text: "See you soon. Remember, I’m always here for you."
+    - text: "Bye! Wishing you a productive day."
+
+  utter_ask_help:
+    - text: "Of course, I’m here to help. What do you need?"
+    - text: "Let’s tackle this together. Tell me more."
+    - text: "I’ve got your back. What’s the issue?"
+    - text: "Happy to assist! Please describe your problem."
+
+  utter_complain:
+    - text: "I’m sorry you’re experiencing this. Let’s work through it."
+    - text: "Thanks for letting me know. I’ll do my best to help."
+    - text: "That sounds frustrating. How can I make it better?"
+    - text: "I appreciate your honesty. Let’s find a solution."
+
+  utter_compliment:
+    - text: "Thank you! Your feedback means a lot."
+    - text: "Glad I could help! 😊"
+    - text: "You’re awesome too!"
+    - text: "That made my day—thank you!"
+
+  utter_task_status:
+    - text: "Here’s the latest update on your task: [status]."
+    - text: "Your task is progressing well."
+    - text: "I checked—your task is on track."
+    - text: "Task update: all systems go!"
+
+  utter_feedback:
+    - text: "Thanks for your feedback! I’m always learning."
+    - text: "Appreciate your input. I’ll use it to improve."
+    - text: "Your feedback helps me get better every day."
+    - text: "Noted! Thanks for sharing your thoughts."
+
+  utter_mood_check:
+    - text: "How are you feeling right now?"
+    - text: "What’s your mood today?"
+    - text: "Checking in—how’s your day going?"
+    - text: "Let me know how you’re doing emotionally."
+
+  utter_escalate:
+    - text: "I’m escalating this to a human agent for extra support."
+    - text: "Let me connect you with someone who can help further."
+    - text: "I’ll make sure your issue gets the attention it needs."
+    - text: "Escalating now—hang tight!"
+
+  utter_fallback:
+    - text: "Sorry, I didn’t quite get that. Could you rephrase?"
+    - text: "I’m not sure I understood. Want to try again?"
+    - text: "Let’s try that one more time."
+    - text: "If you’d like, I can connect you to a human agent."
+
+actions:
+  - action_set_tone_profile
+  - action_dynamic_reply
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+

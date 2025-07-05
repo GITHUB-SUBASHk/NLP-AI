@@ -1,0 +1,108 @@
+version: "3.7"
+
+services:
+  web:
+    build:
+      context: ./if/web
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - rtca-net
+    volumes:
+      - ./if/web:/app
+    
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/dockerfile
+    container_name: fastapi
+    command: uvicorn interfaces.api_server.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    depends_on:
+      - rasa
+      - redis
+    ports:
+      - "8000:8000"
+    networks:
+      - rtca-net
+
+  rasa:
+    build:
+      context: ./rasa_core
+      dockerfile: ../docker/dockerfile.rasa
+    container_name: rasa_container
+    command: >
+      bash -c "rasa train && rasa run --enable-api --cors '*' --port 5005 --endpoints /app/rasa_core/endpoints.yml --actions actions"
+    volumes:
+      - ./rasa_core:/app/rasa_core
+      - ./data:/app/data
+      - ./rasa_core/models:/app/models
+      - ./rasa_core/actions:/app/actions
+    environment:
+      - TZ=UTC
+    ports:
+      - "5005:5005"
+    networks:
+      - rtca-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - rtca-net
+
+  # Optional: Admin panel (uncomment if needed)
+  # admin_panel:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.admin
+  #   container_name: admin_panel
+  #   depends_on:
+  #     - backend
+  #   ports:
+  #     - "8080:80"
+  #   networks:
+  #     - rtca-net
+
+  #Optional: Nginx reverse proxy (uncomment if needed)
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: nginx
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - rasa
+      - web
+    networks:
+      - rtca-net
+
+volumes:
+  redis_data:
+
+networks:
+  rtca-net:
+    driver: bridge
+
+api:
+  build:
+    context: .
+    dockerfile: ./docker/dockerfile.api
+  ports:
+      - "8000:8000"
+  environment:
+  -
+  RASA_API_URL=http://rasaa:5005
